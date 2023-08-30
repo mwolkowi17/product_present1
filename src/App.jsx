@@ -38,7 +38,7 @@ export default function App() {
         preset='studio'       
       />
       {/* <Model scale={[2,2,2]} /> */}
-      <Model2 /> 
+      <Model2 scale={[2,2,2]} /> 
       <OrbitControls />
     </Canvas>
   )
