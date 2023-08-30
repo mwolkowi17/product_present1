@@ -2,7 +2,7 @@
 import './App.css'
 import { useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Environment } from '@react-three/drei'
+import { OrbitControls, Environment, Stage, ContactShadows } from '@react-three/drei'
 import { Model } from './Model'
 import { Model2 } from './Model2'
 
@@ -29,16 +29,19 @@ function Box(props) {
   )
 }
 
-export default function App() {
+export default function App(props) {
   return (
     <Canvas>
-      <Environment
-        background={false} // can be true, false or "only" (which only sets the background) (default: false)
-        blur={0} // blur factor between 0 and 1 (default: 0, only works with three 0.146 and up)
-        preset='studio'       
-      />
-      {/* <Model scale={[2,2,2]} /> */}
-      <Model2 scale={[2,2,2]} /> 
+      <Stage adjustCamera intensity={0.5} shadows="contact" environment="city">
+        <Environment
+          background={true} // can be true, false or "only" (which only sets the background) (default: false)
+          blur={0.8} // blur factor between 0 and 1 (default: 0, only works with three 0.146 and up)
+          preset='sunset'
+        />
+        {/* <Model scale={[2,2,2]} /> */}
+        <Model2 />
+     
+      </Stage>
       <OrbitControls />
     </Canvas>
   )
